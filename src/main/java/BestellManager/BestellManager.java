@@ -31,12 +31,11 @@ JComboBox<String> kaffeeArtBox = new JComboBox<>(new String[] {
 
         JTextField tfAnzahl = new JTextField();
 
-        JRadioButton jatogo = new JRadioButton("true");
-        JRadioButton neintogo = new JRadioButton("false");
 
         ButtonGroup togoButtons = new ButtonGroup();
         togoButtons.add(jatogo);
         togoButtons.add(neintogo);
+
 
         KaffeArt.addActionListener(new ActionListener() {
             @Override
