@@ -17,10 +17,12 @@ public class BestellManager extends JFrame {
     private JTextField tfAnzahl;
 
     public BestellManager() {
-       setVisible(true);
-       setSize(500, 500);
-       setContentPane(myPanel);
-       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Bestellmanager");
+        setVisible(true);
+        setSize(500, 500);
+        setResizable(false);
+        setContentPane(myPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 JComboBox<String> kaffeeArtBox = new JComboBox<>(new String[] {
     "Espresso", "Americano", "Cappuccino", "Iced Latte"
