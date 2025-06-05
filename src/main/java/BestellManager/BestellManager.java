@@ -45,7 +45,7 @@ public class BestellManager extends JFrame {
         bt_gesamtpreis.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // berechnePreis();
+               // berechne();
             }
         });
     }
@@ -78,11 +78,14 @@ public class BestellManager extends JFrame {
             textArea1.append(kaffee1.toString());
         }
     }
-
-    /*private double berechnePreis(){
+/*
+    private double berechne(){
+        String kaffeeArt = comboKaffeeArt.getSelectedItem().toString();
+        String txtAnzahl = tfAnzahl.getText();
 
 
       double grundpreis = 0.0;
+      int anzahl = Integer.parseInt(txtAnzahl);
 
         switch (kaffeeArt) {
             case "Espresso":
@@ -109,8 +112,9 @@ public class BestellManager extends JFrame {
                 grundpreis = 0.0;
 
         }
+
         if (milch.equals("Hafermilch") || milch.equals("Sojamilch")) {
-            grundpreis += 0.30;
+           grundpreis += 0.30;
         }
         if (togo) {
             preis = grundpreis += 0.50;
@@ -126,8 +130,8 @@ public class BestellManager extends JFrame {
     }*/
 
 
-        public static void main (String[]args){
-            new BestellManager();
+    public static void main (String[]args){
+        new BestellManager();
 
         }
     }
