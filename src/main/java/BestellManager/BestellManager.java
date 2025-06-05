@@ -21,6 +21,7 @@ public class BestellManager extends JFrame {
 
     private ArrayList<Kaffee> kaffeeliste = new ArrayList<>();
 
+
     public BestellManager() {
         setTitle("Bestellmanager");
         setVisible(true);
@@ -28,7 +29,6 @@ public class BestellManager extends JFrame {
         setResizable(false);
         setContentPane(myPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         initObjekte();
 
         ButtonGroup togoButtons = new ButtonGroup();
@@ -45,7 +45,7 @@ public class BestellManager extends JFrame {
         bt_gesamtpreis.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // berechne();
+                berechne();
             }
         });
     }
@@ -74,20 +74,33 @@ public class BestellManager extends JFrame {
     }
 
     public void ausgeben() {
+        textArea1.setText("");
         for (Kaffee kaffee1 : kaffeeliste) {
             textArea1.append(kaffee1.toString());
+            textArea1.append("\n");
         }
     }
-/*
-    private double berechne(){
+
+    private void berechne() {
         String kaffeeArt = comboKaffeeArt.getSelectedItem().toString();
         String txtAnzahl = tfAnzahl.getText();
 
+        try {
+            double grundpreis = 0.0;
+            int anzahl = Integer.parseInt(txtAnzahl);
+            if (kaffeeArt.equals("Espresso")) {
+                grundpreis = 2.20;
+            } else if (kaffeeArt.equals("Americano")) {
+                grundpreis = 2.70;
+            }
+            grundpreis = grundpreis * anzahl;
+            tfPreis.setText(grundpreis + "€");
+        } catch (Exception e) {
+            tfAnzahl.setText("");
+            JOptionPane.showMessageDialog(this, "Bitte Anzahl eingeben");
+        }
 
-      double grundpreis = 0.0;
-      int anzahl = Integer.parseInt(txtAnzahl);
-
-        switch (kaffeeArt) {
+       /* switch (kaffeeArt) {
             case "Espresso":
                 grundpreis += 2.20;
                 break;
@@ -129,11 +142,15 @@ public class BestellManager extends JFrame {
         return kaffeeArt;
     }*/
 
-
-    public static void main (String[]args){
+    }
+        public static void main (String[]args){
         new BestellManager();
 
-        }
+        //     }
+        // });
     }
+}
+
+
 
 

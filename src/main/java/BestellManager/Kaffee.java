@@ -1,6 +1,8 @@
 package BestellManager;
 
 import javax.swing.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Kaffee {
     private String kaffeeArt;
@@ -19,6 +21,7 @@ public class Kaffee {
     public String toString() {
         return "Kaffee Art: " + kaffeeArt + "Milch Sorte: " + milch + "Togo? " + togo + "Anzahl: " + anzahl;
     }
+
 
    /* private double berechnePreis() {
 
