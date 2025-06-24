@@ -25,7 +25,7 @@ public class BestellManager extends JFrame {
     public BestellManager() {
         setTitle("Bestellmanager");
         setVisible(true);
-        setSize(500, 500);
+        setSize(500, 600);
         setResizable(false);
         setContentPane(myPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,12 +65,22 @@ public class BestellManager extends JFrame {
         String gewaehlteArt = comboKaffeeArt.getSelectedItem().toString();
         String gewaehlteMilch = comboMilchSorte.getSelectedItem().toString();
         boolean togo = jatogo.isSelected();
-        int anzahl = Integer.parseInt(tfAnzahl.getText());
 
+        try {
+            int anzahl = Integer.parseInt(tfAnzahl.getText());
+            if (anzahl <= 0 || anzahl > 10) {
+                JOptionPane.showMessageDialog(this, "Bitte wähle eine Zahl von 1-10");
+                tfAnzahl.setText("");
+                return;
+            }
+            Kaffee k = new Kaffee(gewaehlteArt, togo, gewaehlteMilch, anzahl);
+            kaffeeliste.add(k);
+            ausgeben();
 
-        Kaffee k = new Kaffee(gewaehlteArt, togo, gewaehlteMilch, anzahl);
-        kaffeeliste.add(k);
-        ausgeben();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Bitte eine gültige Anzahl eingeben" );
+            tfAnzahl.setText("");
+        }
     }
 
     public void ausgeben() {
@@ -91,6 +101,11 @@ public class BestellManager extends JFrame {
 
         try {
             int anzahl = Integer.parseInt(txtAnzahl);
+            if (anzahl <= 0 || anzahl > 10) {
+                JOptionPane.showMessageDialog(this, "Bitte wähle eine Zahl von 1-10");
+                tfAnzahl.setText("");
+                return;
+            }
 
             switch (kaffeeArt) {
                 case "Espresso":
@@ -120,7 +135,7 @@ public class BestellManager extends JFrame {
                 grundpreis += 0.50;
             }
             double gesamtpreis = grundpreis * anzahl;
-            tfPreis.setText(String.format("%.2f",gesamtpreis));
+            tfPreis.setText(String.format("%.2f €",gesamtpreis));
 
         } catch (NumberFormatException e) {
             tfAnzahl.setText("");

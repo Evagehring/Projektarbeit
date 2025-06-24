@@ -20,6 +20,10 @@ public class Kaffee {
 
     @Override
     public String toString() {
-        return "Kaffee Art: " + kaffeeArt + "Milch Sorte: " + milch + "Togo? " + togo + "Anzahl: " + anzahl;
+        String togoText = "Nein";
+        if (togo) {
+            togoText = "Ja";
+        }
+        return "Kaffee Art: " + kaffeeArt + "\n Milch Sorte: " + milch + "\n Togo? " + togoText + "\n Anzahl: " + anzahl;
     }
 }
