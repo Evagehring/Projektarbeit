@@ -67,10 +67,10 @@ public class BestellManager extends JFrame {
         boolean togo = jatogo.isSelected();
         int anzahl = Integer.parseInt(tfAnzahl.getText());
 
+
         Kaffee k = new Kaffee(gewaehlteArt, togo, gewaehlteMilch, anzahl);
         kaffeeliste.add(k);
         ausgeben();
-
     }
 
     public void ausgeben() {
@@ -83,71 +83,54 @@ public class BestellManager extends JFrame {
 
     private void berechne() {
         String kaffeeArt = comboKaffeeArt.getSelectedItem().toString();
+        String MilchSorte = comboMilchSorte.getSelectedItem().toString();
+        boolean togo = jatogo.isSelected();
         String txtAnzahl = tfAnzahl.getText();
 
+        double grundpreis = 0.0;
+
         try {
-            double grundpreis = 0.0;
             int anzahl = Integer.parseInt(txtAnzahl);
-            if (kaffeeArt.equals("Espresso")) {
-                grundpreis = 2.20;
-            } else if (kaffeeArt.equals("Americano")) {
-                grundpreis = 2.70;
+
+            switch (kaffeeArt) {
+                case "Espresso":
+                    grundpreis += 2.20;
+                    break;
+
+                case "Americano":
+                    grundpreis += 2.70;
+                    break;
+
+                case "Cappuccino":
+                    grundpreis += 3.30;
+                    break;
+
+                case "Iced Latte":
+                    grundpreis += 4.20;
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(this, "Getränk nicht gefunden");
+                    return;
             }
-            grundpreis = grundpreis * anzahl;
-            tfPreis.setText(grundpreis + "€");
-        } catch (Exception e) {
+            if (MilchSorte.equals("Hafermilch") || MilchSorte.equals("Sojamilch")) {
+                grundpreis += 0.30;
+            }
+            if (togo) {
+                grundpreis += 0.50;
+            }
+            double gesamtpreis = grundpreis * anzahl;
+            tfPreis.setText(String.format("%.2f",gesamtpreis));
+
+        } catch (NumberFormatException e) {
             tfAnzahl.setText("");
-            JOptionPane.showMessageDialog(this, "Bitte Anzahl eingeben");
+            JOptionPane.showMessageDialog(this, "Bitte eine gültige Anzahl eingeben");
         }
-
-       /* switch (kaffeeArt) {
-            case "Espresso":
-                grundpreis += 2.20;
-                break;
-
-
-            case "Americano":
-                grundpreis += 2.70;
-                break;
-
-
-            case "Cappuccino":
-                grundpreis += 3.30;
-                break;
-
-
-            case "Iced Latte":
-                grundpreis += 4.20;
-                break;
-
-            default:
-                JOptionPane.showMessageDialog(null,"Getränk nicht gefunden");
-                grundpreis = 0.0;
-
-        }
-
-        if (milch.equals("Hafermilch") || milch.equals("Sojamilch")) {
-           grundpreis += 0.30;
-        }
-        if (togo) {
-            preis = grundpreis += 0.50;
-        }
-
-        return grundpreis;
-    }
-    public double getPreis() {
-        return preis;
-    }
-    public String toString() {
-        return kaffeeArt;
-    }*/
 
     }
         public static void main (String[]args){
         new BestellManager();
 
-        //     }
-        // });
     }
 }
 
