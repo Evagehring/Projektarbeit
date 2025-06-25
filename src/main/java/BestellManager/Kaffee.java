@@ -17,6 +17,7 @@ public class Kaffee {
         this.anzahl = anzahl;
     }
 
+    //Berechnung des Gesamtpreises auf Basis der Objektattribute
     public double berechne() {
         double grundpreis = 0.0;
 
@@ -54,6 +55,7 @@ public class Kaffee {
         return togo;
     }
 
+    //Rückgabe der Eigenschaften des Kaffee-Objekts
     @Override
     public String toString() {
         String togoText = "Nein";

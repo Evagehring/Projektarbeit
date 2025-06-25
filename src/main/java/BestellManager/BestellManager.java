@@ -65,6 +65,7 @@ public class BestellManager extends JFrame {
         });
     }
 
+    //3 Beispielobjekte
     public void initObjekte() {
         Kaffee k1 = new Kaffee("Espresso", false, "keine Milch", 1);
         Kaffee k2 = new Kaffee("Iced Latte", true, "Hafermilch", 2);
@@ -76,6 +77,7 @@ public class BestellManager extends JFrame {
 
     }
 
+    //Speichern eines neuen Kaffee-Objekts in die Liste
     public void speichern() {
         String gewaehlteArt = comboKaffeeArt.getSelectedItem().toString();
         String gewaehlteMilch = comboMilchSorte.getSelectedItem().toString();
@@ -104,6 +106,7 @@ public class BestellManager extends JFrame {
         }
     }
 
+    //Alle gespeicherten Kaffee-Objekte in der TextArea anzeigen
     public void ausgeben() {
         textArea1.setText("");
         for (Kaffee kaffee1 : kaffeeliste) {
@@ -113,16 +116,18 @@ public class BestellManager extends JFrame {
         }
     }
 
+    //Nur die Togo-Kaffees anzeigen
     public void filtern() {
         textArea1.setText("");
         for (Kaffee kaffee1 : kaffeeliste) {
-            if (kaffee1.isTogo() == true) {
+            if (kaffee1.isTogo()) {
                 textArea1.append(kaffee1.toString());
                 textArea1.append("\n\n");
             }
         }
     }
 
+    //Berechnung des Gesamtpreises auf Basis der Eingaben
     private void berechnePreis() {
 
         String kaffeeArt = comboKaffeeArt.getSelectedItem().toString();
