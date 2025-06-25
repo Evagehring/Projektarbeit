@@ -20,15 +20,18 @@ public class BestellManager extends JFrame {
     private JButton bt_gesamtpreis;
     private JButton filter_button;
     private JButton bt_alleAnzeigen;
+    private JButton bt_bestellen;
 
+    //Erstellen der ArrayList
     private ArrayList<Kaffee> kaffeeliste = new ArrayList<>();
 
 
     public BestellManager() {
         setTitle("Bestellmanager");
         setVisible(true);
-        setSize(600, 900);
+        setSize(600, 700);
         setResizable(false);
+        setLocationRelativeTo(null);
         setContentPane(myPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initObjekte();
@@ -63,13 +66,20 @@ public class BestellManager extends JFrame {
                 ausgeben();
             }
         });
+        bt_bestellen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Vielen Dank für Ihre Bestellung!");
+                dispose();
+            }
+        });
     }
 
-    //3 Beispielobjekte
+    //Methode zum Aufrufen und Speichern der 3 Beispielobjekte (in die ArrayList)
     public void initObjekte() {
         Kaffee k1 = new Kaffee("Espresso", false, "keine Milch", 1);
-        Kaffee k2 = new Kaffee("Iced Latte", true, "Hafermilch", 2);
-        Kaffee k3 = new Kaffee("Cappuccino", false, "Kuhmilch", 3);
+        Kaffee k2 = new Kaffee("Iced Latte", true, "Hafermilch", 1);
+        Kaffee k3 = new Kaffee("Cappuccino", false, "Kuhmilch", 1);
 
         kaffeeliste.add(k1);
         kaffeeliste.add(k2);
@@ -95,7 +105,11 @@ public class BestellManager extends JFrame {
                 tfAnzahl.setText("");
                 return;
             }
+
+            //Erstellen eines Kaffee-Objekts mit den vom Benutzer gewählten Daten
             Kaffee k = new Kaffee(gewaehlteArt, togo, gewaehlteMilch, anzahl);
+
+            //Hinzufügen der neu erstellten Objekte zu der ArrayList
             kaffeeliste.add(k);
             textArea1.setText("");
             textArea1.append(k.toString());
@@ -134,6 +148,7 @@ public class BestellManager extends JFrame {
         String milch = comboMilchSorte.getSelectedItem().toString();
         boolean togo = jatogo.isSelected();
 
+        //Exception-Handling
         if (kaffeeArt.equals("-- Kaffeesorte auswählen --") || milch.equals("-- Milchsorte auswählen --")) {
             JOptionPane.showMessageDialog(this, "Bitte wähle eine Kaffee- und Milchsorte aus.");
             return;

@@ -14,6 +14,6 @@ class KaffeeTest {
    }
    @Test
     void toStringTest(){
-        assertEquals("Kaffee Art: Espresso\n Milch Sorte: Kuhmilch\n Togo? Nein\n Anzahl: 2", kaffee.toString());
+        assertEquals("2x Espresso, Kuhmilch, zum hier trinken", kaffee.toString());
    }
 }

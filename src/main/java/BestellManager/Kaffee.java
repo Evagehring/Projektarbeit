@@ -58,10 +58,10 @@ public class Kaffee {
     //Rückgabe der Eigenschaften des Kaffee-Objekts
     @Override
     public String toString() {
-        String togoText = "Nein";
+        String togoText = "zum hier trinken";
         if (togo) {
-            togoText = "Ja";
+            togoText = "to go";
         }
-        return "Kaffee Art: " + kaffeeArt + "\n Milch Sorte: " + milch + "\n Togo? " + togoText + "\n Anzahl: " + anzahl;
+        return anzahl + "x" + " " + kaffeeArt + ", " + milch + ", " + togoText;
     }
 }
