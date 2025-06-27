@@ -164,7 +164,7 @@ public class BestellManager extends JFrame {
 
             Kaffee kaffee = new Kaffee(kaffeeArt, togo, milch, anzahl);
             double gesamtpreis = kaffee.berechne();
-            tfPreis.setText(String.format("%.2f €",gesamtpreis));
+            tfPreis.setText(gesamtpreis + " €");
 
         } catch (NumberFormatException e) {
             tfAnzahl.setText("");
