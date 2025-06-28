@@ -19,8 +19,7 @@ Mit CoffeeControl kannst du:
 
 UML - Diagramm:
 
-[ProTech - UML Diagram CoffeeControl.pdf](https://github.com/user-attachments/files/20906007/ProTech.-.UML.Diagram.CoffeeControl.pdf)
+[ProTech - UML Diagram mit Beziehungen.pdf](https://github.com/user-attachments/files/20961524/ProTech.-.UML.Diagram.mit.Beziehungen.pdf)
 
 
 
-Link zum Video:
